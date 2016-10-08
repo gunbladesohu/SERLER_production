@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   get 'welcome/landing'
   #root 'welcome#landing'
+  get 'welcome/admin'
+  
+  
   get 'evidence_sources/my_submissions'
   get 'evidence_sources/new_submitted'
   get 'evidence_sources/rejected'
@@ -17,6 +20,11 @@ Rails.application.routes.draw do
   resources :evidence_sources do
     resources :g2_evidence_items
   end
+  
+  get 'headlines/news', to: 'headlines#news'
+  post 'headlines/news', to: 'headlines#create_news'
+  get 'headlines/recent_articles', to: 'headlines#recent_articles'
+  post 'headlines/recent_articles', to: 'headlines#create_recent_articles'
 
   get "search/history"
   resources :search do
